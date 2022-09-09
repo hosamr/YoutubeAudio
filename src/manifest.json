@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "YoutubeAudio",
+    "version": "1.0",
+
+    "description": "Youtube Videos will play Audio Only which can save your bandwidth.",
+
+    "author": "Hosam Eldeen Reda",
+    "background": {
+        "service_worker": "js/background.js"
+    },
+
+    "action": {
+        "default_title": "YoutubeAudio",
+        "default_popup": "html/popup.html"
+    },
+
+    "content_scripts": [
+        {
+            "matches": [ "*://www.youtube.com/*", "*://music.youtube.com/*" ],
+            "js": [ "js/contentScript.js" ],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+
+    "incognito": "split",
+    "host_permissions": [
+        "*://www.youtube.com/*",
+        "*://music.youtube.com/*",
+        "*://*.googlevideo.com/*"
+
+    ],
+    "externally_connectable": {
+        "matches": [ "*://*.google.com/*" ]
+    },
+
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "storage"
+    ],
+    "short_name": "YoutubeAudio"
+
+}
